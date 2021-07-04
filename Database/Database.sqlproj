@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ShootingClubDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{C32A5F3D-C878-4485-811E-171E32ABE8AA}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ShootingClubDatabase</RootNamespace>
+    <AssemblyName>ShootingClubDatabase</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <QueryStoreDesiredState>Off</QueryStoreDesiredState>
+    <ChangeTrackingRetentionUnit>Minutes</ChangeTrackingRetentionUnit>
+    <DelayedDurability>DISABLED</DelayedDurability>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="dbo\Sequences\" />
+    <Folder Include="Scripts" />
+    <Folder Include="dbo\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Local.publish.xml" />
+    <None Include="Scripts\DataClassification.sql" />
+    <None Include="Scripts\Locations.sql" />
+    <None Include="Scripts\GoverningBodies.sql" />
+    <None Include="Scripts\DisciplineCategories.sql" />
+    <None Include="Scripts\CodeGenSecurityPolicy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\UserVerified.sql" />
+    <Build Include="dbo\Tables\Visit.sql" />
+    <Build Include="dbo\Tables\Competition.sql" />
+    <Build Include="dbo\Tables\Discipline.sql" />
+    <Build Include="dbo\Tables\GoverningBody.sql" />
+    <Build Include="dbo\Tables\Grade.sql" />
+    <Build Include="dbo\Tables\Organisation.sql" />
+    <Build Include="dbo\Tables\OrganisationUser.sql" />
+    <Build Include="dbo\Tables\OrganisationUserRole.sql" />
+    <Build Include="dbo\Tables\Participation.sql" />
+    <Build Include="dbo\Tables\Person.sql" />
+    <Build Include="dbo\Tables\PersonSchedule.sql" />
+    <Build Include="dbo\Tables\ReplacementEmail.sql" />
+    <Build Include="dbo\Tables\ShootingRange.sql" />
+    <Build Include="dbo\Tables\ShootingRangeBay.sql" />
+    <Build Include="dbo\Tables\ShootingRangeSchedule.sql" />
+    <Build Include="Security\WebsiteRole.sql" />
+    <Build Include="dbo\Functions\SecurityReadPredicate_fn.sql" />
+    <Build Include="dbo\Functions\SecurityWritePredicate_fn.sql" />
+    <Build Include="dbo\User Defined Types\EmailAddress.sql" />
+    <Build Include="dbo\User Defined Types\PasswordHash.sql" />
+    <Build Include="dbo\User Defined Types\UserRole.sql" />
+    <Build Include="dbo\Sequences\OrganisationIdSequence.sql" />
+    <Build Include="dbo\Sequences\SharedIntSequence.sql" />
+    <Build Include="dbo\Sequences\RegistrantIdSequence.sql" />
+    <Build Include="Security\OrganisationSecurityPolicy.sql" />
+    <Build Include="dbo\Tables\UserUnverified.sql" />
+    <Build Include="dbo\Stored Procedures\AddSignup_tr.sql" />
+    <Build Include="dbo\Stored Procedures\ConfirmSignup_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetPasswordHashByEmail_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetVerificationCode_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmail_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserSignInDetails_tr.sql" />
+    <Build Include="Security\ShootingClubUser.sql" />
+    <Build Include="dbo\Stored Procedures\AddOrganisation_tr.sql" />
+    <Build Include="dbo\Stored Procedures\AddPerson_tr.sql" />
+    <Build Include="dbo\Tables\PersonEmail.sql" />
+    <Build Include="dbo\Sequences\PersonIdSequence.sql" />
+    <Build Include="dbo\Stored Procedures\GetOrganisationsByUser_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetPeople_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetPerson_tr.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePerson_tr.sql" />
+    <Build Include="dbo\Stored Procedures\UpdatePersonEmail.sql" />
+    <Build Include="dbo\Tables\Role.sql" />
+    <Build Include="dbo\Tables\Location.sql" />
+    <Build Include="dbo\Functions\ValidateLocationType_fn.sql" />
+    <Build Include="dbo\Tables\LocationType.sql" />
+    <Build Include="dbo\Tables\Subdivision.sql" />
+    <Build Include="dbo\Tables\SubdivisionCategory.sql" />
+    <Build Include="dbo\Functions\ValidateCycleFreeRecursion_Subdivision_fn.sql" />
+    <Build Include="dbo\Functions\ValidateCycleFreeSchema_fn.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
+    <None Include="Scripts\QualityEnforcement.sql" />
+    <Build Include="dbo\Tables\Country.sql" />
+    <Build Include="dbo\User Defined Types\Role.sql" />
+    <Build Include="dbo\Stored Procedures\AddRoles_tr.sql" />
+    <Build Include="dbo\User Defined Types\LocationType.sql" />
+    <Build Include="dbo\Stored Procedures\AddLocationTypes_tr.sql" />
+    <Build Include="dbo\User Defined Types\Location.sql" />
+    <Build Include="dbo\Stored Procedures\AddLocations_tr.sql" />
+    <Build Include="dbo\User Defined Types\SubdivisionCategory.sql" />
+    <Build Include="dbo\User Defined Types\Subdivision.sql" />
+    <Build Include="dbo\User Defined Types\GoverningBody.sql" />
+    <Build Include="dbo\User Defined Types\Discipline.sql" />
+    <Build Include="dbo\Stored Procedures\AddGoverningBodies_tr.sql" />
+    <Build Include="dbo\Tables\DisciplineCategory.sql" />
+    <Build Include="dbo\User Defined Types\DisciplineCategory.sql" />
+    <Build Include="dbo\Stored Procedures\AddDisciplineCategories_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetPersonRowVersion_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserIdByEmail_tr.sql" />
+    <Build Include="dbo\Tables\PersonScheduleItem.sql" />
+    <Build Include="dbo\Tables\ShootingRangeScheduleItem.sql" />
+    <Build Include="dbo\Views\Error_V.sql" />
+    <Build Include="dbo\Stored Procedures\AddShootingRange_tr.sql" />
+    <Build Include="dbo\Sequences\ShootingRangeIdSequence.sql" />
+    <Build Include="dbo\Views\Number30_V.sql" />
+    <Build Include="dbo\Views\Number35_V.sql" />
+    <Build Include="dbo\Stored Procedures\AddCompetition_tr.sql" />
+    <Build Include="dbo\Sequences\CompetitionIdSequence.sql" />
+    <Build Include="dbo\Stored Procedures\AddGrades_tr.sql" />
+    <Build Include="dbo\Tables\DisciplineOffering.sql" />
+    <Build Include="dbo\User Defined Types\DisciplineOffering.sql" />
+    <Build Include="dbo\Tables\ShooterCohort.sql" />
+    <Build Include="dbo\User Defined Types\ShooterCohort.sql" />
+    <Build Include="dbo\User Defined Types\Grade.sql" />
+    <Build Include="dbo\Stored Procedures\Visit_Add_tr.sql" />
+    <Build Include="dbo\Stored Procedures\Visit_Delete_tr.sql" />
+    <Build Include="dbo\Sequences\ScoreIdSequence.sql" />
+    <Build Include="dbo\Stored Procedures\AddScore_tr.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateScore_tr.sql" />
+    <Build Include="dbo\Stored Procedures\GetScoreRowVersion_tr.sql" />
+    <Build Include="dbo\Tables\ParticipationType.sql" />
+    <Build Include="dbo\Stored Procedures\AddParticipationTypes_tr.sql" />
+    <Build Include="dbo\User Defined Types\ParticipationType.sql" />
+    <Build Include="dbo\Stored Procedures\AddParticipation_tr.sql" />
+    <Build Include="dbo\Sequences\ParticipationIdSequence.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteParticipation_tr.sql" />
+    <Build Include="dbo\Stored Procedures\EnsureTransactionCountIsOneOrThrow.sql" />
+    <Build Include="dbo\Views\Number1Indexed_V.sql" />
+    <Build Include="dbo\Stored Procedures\Visit_Get.sql" />
+    <Build Include="dbo\User Defined Types\Country.sql" />
+    <Build Include="dbo\Tables\Score.sql" />
+    <Build Include="dbo\Functions\ValidateScoreType_fn.sql" />
+    <Build Include="dbo\Tables\ScoreCompetition.sql" />
+    <Build Include="dbo\Tables\DisciplineRegistration.sql" />
+    <Build Include="dbo\Functions\ValidateParticipationType_fn.sql" />
+    <Build Include="dbo\Functions\GetObjectName_fn.sql" />
+    <Build Include="dbo\Stored Procedures\ThrowError_OpenTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\ThrowError_UtilityTransactionRequiresOpenTransaction.sql" />
+    <None Include="Scripts\Roles.sql" />
+    <None Include="Scripts\OrganisationData.sql" />
+    <None Include="Scripts\Messages.sql" />
+    <Build Include="dbo\Tables\CompetitionHosted.sql" />
+    <Build Include="dbo\Tables\CompetitionEndorsed.sql" />
+    <Build Include="dbo\Functions\ValidateCompetitionType_fn.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="InsertReferenceData">
+      <DefaultValue>True</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="InsertTestData">
+      <DefaultValue>True</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent>pwsh "$(SolutionDir)prebuild.ps1"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
