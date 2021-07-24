@@ -1,0 +1,252 @@
+digraph ER {
+	layout=dot
+    nodesep=1
+    ranksep=1
+
+    graph [
+        rankdir=TB
+        splines=ortho
+    ]
+
+    edge [
+        minlen=2
+    ]
+
+    node [shape=box]
+    DisciplineSponsor
+    FirearmType
+    Location
+    LocationType
+    Organisation
+    ParticipationType
+    Role
+    ShooterCohort
+    User
+
+    // All nodes defined later exist in the context of something else
+    node [style=rounded]
+
+    Organisation -> OrganisationUser [
+        arrowhead=crowodot
+        headlabel="Hosts"
+    ]
+
+    Role -> OrganisationUserRole [
+        style=dashed
+        arrowhead=crowodot
+        headlabel="Granted to"
+    ]
+
+    UserVerified -> OrganisationUser [
+        arrowhead=crowodot
+        headlabel="Uses software as"
+    ]
+
+	User -> UserUnverified [
+        arrowhead=teetee
+        headlabel="Is one of"
+    ]
+
+    User -> UserVerified [
+        arrowhead=teetee
+        headlabel="Is one of"
+    ]
+
+    UserVerified -> ReplacementEmail [
+        arrowhead=teetee
+        headlabel="Requests"
+    ]
+
+    OrganisationUser -> OrganisationUserRole [
+        arrowhead=crowodot
+        headlabel="Assigned"
+    ]
+
+    //////////////////////////////////////////////////
+    // Shooting range
+    //////////////////////////////////////////////////
+
+    Organisation -> ShootingRange [
+        arrowhead=crowodot
+        headlabel="Has"
+    ]
+
+    ShootingRange -> ShootingRangeSchedule [
+        arrowhead=teetee
+        headlabel="Has"
+    ]
+
+    ShootingRange -> ShootingRangeBay [
+        arrowhead=crowodot
+        headlabel="Houses"
+    ]
+
+    ShootingRangeSchedule -> ShootingRangeScheduleItem [
+        arrowhead=crowodot
+        headlabel="Contains"
+    ]
+
+    //////////////////////////////////////////////////
+    // End of ShootingRange
+    //////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////
+    // Person
+    //////////////////////////////////////////////////
+
+    Organisation -> Person [
+        arrowhead=crowodot
+        headlabel="Hosts"
+    ]
+
+    Person -> PersonEmail [
+        arrowhead=teeodot
+        headlabel="Has"
+    ]
+
+    Person -> Visit [
+        arrowhead=crowodot
+        headlabel="Records"
+    ]
+
+    Person -> Participation [
+        arrowhead=crowodot
+        headlabel="Records"
+    ]
+
+    Person -> PersonSchedule [
+        arrowhead=teetee
+        headlabel="Has"
+    ]
+
+    PersonSchedule -> PersonScheduleItem [
+        arrowhead=crowodot
+        headlabel="Contains"
+    ]
+
+    Person -> Score [
+        arrowhead=crowodot
+        headlabel="Records"
+    ]
+
+    Person -> DisciplineRegistration [
+        arrowhead=crowodot
+        headlabel="Registers for"
+    ]
+
+    //////////////////////////////////////////////////
+    // End of Person
+    //////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////
+    // Location
+    //////////////////////////////////////////////////
+
+    LocationType -> Location [
+        arrowhead=crowodot
+        headlabel="Discriminates  "
+    ]
+
+    Location -> Country [
+        arrowhead=teetee
+        headlabel="Is one of"
+    ]
+
+    Country -> SubdivisionCategory [
+        arrowhead=crowodot
+        headlabel="Comprises"
+    ]
+
+    SubdivisionCategory -> Subdivision [
+        arrowhead=crowodot
+        headlabel="Classifies"
+    ]
+
+    Location -> Subdivision [
+        arrowhead=teetee
+        headlabel="Is one of"
+    ]
+
+    Location -> LocationParticipationType [
+        arrowhead=crowodot
+        headlabel="Legislates"
+    ]
+
+    //////////////////////////////////////////////////
+    // End of Location
+    //////////////////////////////////////////////////
+
+    ParticipationType -> LocationParticipationType [
+        arrowhead=crowodot
+        headlabel="Discriminates"
+    ]
+
+    LocationParticipationType -> Participation [
+
+    ]
+
+
+
+    //////////////////////////////////////////////////
+    // Disciplines
+    //////////////////////////////////////////////////
+
+    FirearmType -> DisciplineCategory [
+        arrowhead=crowodot
+        headlabel="Discriminates"
+    ]
+
+    DisciplineSponsor -> DisciplineCategory [
+        arrowhead=crowodot
+        headlabel="Sponsors"
+    ]
+
+    DisciplineCategory -> DisciplineMatch [
+        arrowhead=crowodot
+        headlabel="Categorises"
+    ]
+
+    ShooterCohort -> DisciplineOffering [
+        arrowhead=crowodot
+        headlabel="Is offered"
+    ]
+
+    DisciplineMatch -> DisciplineOffering [
+        arrowhead=crowodot
+        headlabel="Offered as"
+    ]
+
+    DisciplineOffering -> Grade [
+        arrowhead=crowodot
+        headlabel="Graded as"
+    ]
+
+    DisciplineOffering -> DisciplineRegistration [
+        arrowhead=crowodot
+        headlabel="Registered as"
+    ]
+
+
+
+    //////////////////////////////////////////////////
+    // Competition
+    //////////////////////////////////////////////////
+    Organisation -> Competition [
+        arrowhead=crowodot
+        headlabel="Hosts"
+    ]
+
+    Competition -> ScoreCompetition [
+        arrowhead=crowodot
+        headlabel="Records"
+    ]
+
+    Score -> ScoreCompetition [
+        arrowhead=teeodot
+        headlabel="Is a"
+    ]
+}
